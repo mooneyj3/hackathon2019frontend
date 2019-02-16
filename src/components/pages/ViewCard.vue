@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-    .card-box{
+    .card-container{
         margin-top:3%;
     }
     .timeline-container{
