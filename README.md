@@ -50,7 +50,7 @@ Once the install is complete, run `npm run serve`.  You should see something lik
 
 ```
   App running at:
-  - Local:   http://localhost:8080/ 
+  - Local:   http://localhost:9090/
 ```
 
 Everything past this point is specific to development of the project and is not needed to run.

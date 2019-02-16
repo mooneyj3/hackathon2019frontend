@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import Home from '@/components/pages/Home'
 import Statistica from '@/components/pages/Statistica'
 import TellStory from '@/components/pages/TellStory'
@@ -15,6 +14,6 @@ export default new Router({
         {path: '/', name: 'home', component: Home},
         {path: '/tellstory', name: 'home', component: TellStory},
         {path: '/statistica', name: 'home', component: Statistica},
-        {path: '/card', name: 'home', component: ViewCard},
+        {path: '/card/:cardname', name: 'home', component: ViewCard},
     ]
 })
