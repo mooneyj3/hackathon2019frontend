@@ -1,21 +1,91 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
-        <h2>Essential Links</h2>
-        <ul>
-            <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-            <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-            <li><a href="http://chat.vuejs.org/" target="_blank" rel="noopener">Vue Community Chat</a></li>
-            <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-            <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank" rel="noopener">Docs for This Template</a></li>
-        </ul>
-        <h2>Ecosystem</h2>
-        <ul>
-            <li><a href="http://router.vuejs.org/" target="_blank" rel="noopener">vue-router</a></li>
-            <li><a href="http://vuex.vuejs.org/" target="_blank" rel="noopener">vuex</a></li>
-            <li><a href="http://vue-loader.vuejs.org/" target="_blank" rel="noopener">vue-loader</a></li>
-            <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-        </ul>
+        <section>
+            <v-layout
+                    column
+                    wrap
+                    class="my-5"
+                    align-center
+            >
+                <v-flex xs12 sm4 class="my-3">
+                    <div class="text-xs-center">
+                        <h2 class="headline">Making the world better</h2>
+                        <span class="subheading">
+                 one random act of kindness at a time
+              </span>
+                    </div>
+                </v-flex>
+                <v-flex xs12>
+                    <v-container grid-list-xl>
+                        <v-layout row wrap align-center>
+                            <v-flex xs12 md4>
+                                <v-card class="elevation-0 transparent">
+                                    <v-card-text class="text-xs-center">
+                                        <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
+                                    </v-card-text>
+                                    <v-card-title primary-title class="layout justify-center">
+                                        <div class="headline text-xs-center">Get A Card</div>
+                                    </v-card-title>
+                                    <v-card-text>
+                                        If someone receives a card accompanied with a random act of kindness, they can share their experience.
+                                        A simple interface lets users quickly log the kindness they received and share their story.
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex xs12 md4>
+                                <v-card class="elevation-0 transparent">
+                                    <v-card-text class="text-xs-center">
+                                        <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                                    </v-card-text>
+                                    <v-card-title primary-title class="layout justify-center">
+                                        <div class="headline">Give A Card</div>
+                                    </v-card-title>
+                                    <v-card-text>
+                                        Pay It Forward.
+                                        After receiving a card and sharing your experience, continue its legacy by performing a random act of kindness.
+                                        This could be a family member, a friend, or a total stranger.
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+                            <v-flex xs12 md4>
+                                <v-card class="elevation-0 transparent">
+                                    <v-card-text class="text-xs-center">
+                                        <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
+                                    </v-card-text>
+                                    <v-card-title primary-title class="layout justify-center">
+                                        <div class="headline text-xs-center">Track Your Card</div>
+                                    </v-card-title>
+                                    <v-card-text>
+                                        Keep your card name and see it's progress.
+                                        You may find your card has found it's way around the world, or is just making lives better in your neighborhood.
+                                        Either way, it's legacy lives on because of you.
+                                    </v-card-text>
+                                </v-card>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-flex>
+            </v-layout>
+        </section>
+
+        <section>
+            <v-parallax :src="require('@/assets/hero.jpeg')" height="380">
+                <v-layout column align-center justify-center>
+                    <div class="headline white--text mb-3 text-xs-center">Pay It Forward</div>
+                    <em>Change lives today</em>
+                    <!--<v-btn-->
+                            <!--class="blue lighten-2 mt-5"-->
+                            <!--dark-->
+                            <!--large-->
+                            <!--href="/pre-made-themes"-->
+                    <!--&gt;-->
+                        Get Started
+                    </v-btn>
+                </v-layout>
+            </v-parallax>
+        </section>
+
+
     </div>
 </template>
 
@@ -24,7 +94,7 @@
         name: 'hello',
         data () {
             return {
-                msg: 'Welcome to Your Vue.js PWA'
+                msg: 'Welcome to Pay It Forward'
             }
         }
     }

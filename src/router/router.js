@@ -8,8 +8,8 @@ import ViewCard from '@/components/pages/ViewCard'
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
-    hash: true,
+    // mode: 'history',
+    // hash: true,
     routes: [
         {path: '/', name: 'home', component: Home},
         {path: '/tellstory', name: 'tellstory', component: TellStory},
