@@ -28,9 +28,11 @@
             methods: {
                 getCard() {
                     let self = this;
+                    let card_name = this.$route.params.cardname;
+                    console.log(card_name);
                     axios.get(this.$searchAPI, {
                         params: {
-                            cardName: "helloWorld",
+                            cardName: card_name,
                             oneOnly: true,
                         }
                     })
