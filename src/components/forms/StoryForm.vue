@@ -79,7 +79,13 @@
                     history: JSON.stringify(new_history),
                 })
                     .then(function (response) {
-                        if (response.status !== 200) {
+                        if (response.status === 209) {
+                            console.log(response);
+                            self.submit_error = true;
+                            // self.post_response = response.data;
+                            self.post_response = "We detected offensive language, please modify your story."
+                        }
+                        else if (response.status !== 200) {
                             self.submit_error = true;
                             self.post_response = error;
                         }
@@ -89,6 +95,11 @@
                         }
                     })
                     .catch(function (error) {
+                        console.log(error)
+                        self.post_response = "server";
+                        if (error.status === 209) {
+                            self.post_response = "We detected that the message was not positive, please share your positive experiences";
+                        }
                         self.submit_error = true;
                         self.post_response = "server";
                     })
