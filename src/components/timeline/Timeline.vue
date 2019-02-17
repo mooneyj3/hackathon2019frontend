@@ -36,13 +36,13 @@
         data () {
             return {
                 items: [
-                    {icon: 'wb_sunny', color:'color:#CD5C5C', text:'Made my day', num: 'num_made_my_day', bin: 0x10},
-                    {icon: 'spa', color:'color:#F08080',text:'Changed my life', num: 'num_changed_my_life', bin: 0x8},
+                    {icon: 'wb_sunny', color:'color:#CD5C5C', text:'Made my day', num: 'num_made_my_day', bin: 0x20},
+                    {icon: 'spa', color:'color:#F08080',text:'Changed my life', num: 'num_changed_my_life', bin: 0x10},
                     {icon: 'filter_vintage', color:'color:#FA8072', text:'Restored my faith:', num: 'num_restored_my_faith_in_humanity', bin: 0x8},
                     {icon: 'sentiment_dissatisfied', color:'color:#E9967A', text:'Meh', num: 'num_meh', bin: 0x1},
                     {icon: 'thumb_up', color:'color:#FFA07A', text:'Kind gesture', num: 'num_what_a_kind_jesture', bin: 0x2},
                     {icon: 'favorite', color:'color:#DC143C',text:'Made me feel loved', num: 'num_made_me_feel_loved', bin: 0x4}
-                    ]
+                ]
             }
         },
         methods: {
