@@ -8,8 +8,8 @@ window.axios = require('axios');
 
 Vue.use(Vuetify);
 
-Vue.prototype.$searchAPI = 'http://localhost:8080/search';
-Vue.prototype.$submitAPI = 'http://localhost:8080/submit';
+Vue.prototype.$searchAPI = 'http://localhost:5000/search';
+Vue.prototype.$submitAPI = 'http://localhost:5000/submit';
 
 new Vue({
     router: router,

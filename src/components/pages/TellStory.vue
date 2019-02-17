@@ -34,7 +34,7 @@
         components: {StoryForm},
         data() {
             return {
-                query: this.$route.query,
+                card_name: this.$route.card_name,
                 show_form: false,
                 show_not_found: false,
                 show_search: false,
@@ -48,13 +48,13 @@
                 let self = this;
 
                 // check for query in url
-                if (!('name' in this.query)) {
+                if (!('name' in this.card_name)) {
                     this.show_form = true;
                 }
                 else {
                     axios.get(this.$searchAPI, {
                         params: {
-                            cardName: self.query.name,
+                            cardName: self.card_name.name,
                             oneOnly: true,
                         }
                     })
@@ -63,7 +63,7 @@
                                 self.show_not_found = true;
                             }
                             self.show_form = true;
-                            self.card_name = self.query.name;
+                            self.card_name = self.card_name.name;
                         })
                         .catch(function(error) {
                             self.show_not_found = true;

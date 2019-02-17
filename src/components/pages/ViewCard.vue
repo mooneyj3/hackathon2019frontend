@@ -1,10 +1,10 @@
 <template>
     <div>
         <div class="card-container">
-            <Card></Card>
+            <Card :my_card="card"></Card>
         </div>
         <div class="timeline-container">
-            <Timeline></Timeline>
+            <Timeline :myHistory="history"></Timeline>
         </div>
         </div>
 </template>
@@ -13,15 +13,49 @@
     import Timeline from "../timeline/Timeline";
     import Card from "../cards/Card";
     export default {
-        name: "ViewCard",
-        components: {Timeline, Card}
+            name: "ViewCard",
+            components: {Timeline, Card},
+            data() {
+                return {
+                    card: {},
+                    history: {},
+                    show_form: false,
+                    show_not_found: false,
+                    show_search: false
+                }
+            },
+            computed: {},
+            methods: {
+                getCard() {
+                    let self = this;
+                    axios.get(this.$searchAPI, {
+                        params: {
+                            cardName: "helloWorld",
+                            oneOnly: true,
+                        }
+                    })
+                        .then(function (response) {
+                            if (response.data.length !== 1) {
+                                self.show_not_found = true;
+                            } else {
+                                self.card = response.data[0];
+                                self.history = response.data[0].history;
+                                console.log(self.history);
+                            }
+                        })
+                        .catch(function (error) {
+                            self.show_not_found = true;
+                            console.log(error);
+                        })
+                }
+            },
+            beforeMount() {
+                this.getCard();
+            }
     }
 </script>
 
 <style scoped>
-    .card-container{
-        margin-top:3%;
-    }
     .timeline-container{
         margin-left:5%;
         margin-right:5%;
