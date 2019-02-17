@@ -1,17 +1,16 @@
 <template>
-    <div>
-        <h1 class="pl-5 pr-5">Featured Cards</h1>
-        <FeaturedCarousel></FeaturedCarousel>
-        <HighestStats></HighestStats>
-    </div>
+    <v-carousel hide-controls>
+        <v-carousel-item
+                v-for="(item,i) in items"
+                :key="i"
+                :src="item.src"
+        ></v-carousel-item>
+    </v-carousel>
 </template>
 
 <script>
-    import FeaturedCarousel from "../statistica/FeaturedCarousel";
-    import HighestStats from "../statistica/HighestStats";
     export default {
-        name: "Statistica",
-        components: {HighestStats, FeaturedCarousel},
+        name: "FeaturedCarousel",
         data () {
             return {
                 items: [
@@ -20,9 +19,8 @@
                     {src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'},
                     {src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'}
                 ]
-
             }
-        }
+        },
     }
 </script>
 

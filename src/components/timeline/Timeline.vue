@@ -65,38 +65,7 @@
             }
         },
         computed: {
-        }
-            // sentiment: function () {
-            //     var sentiment = "";
-            //     sent = {
-            //         'num_made_my_day' : 'Made my day',
-            //         'num_what_a_kind_jesture' : 'Kind gesture',
-            //         'num_made_me_feel_loved' : 'Made me feel loved',
-            //         'num_restored_my_faith_in_humanity' :'Restored my faith',
-            //         'num_changed_my_life' : 'Changed my life',
-            //         'num_meh ' : 'Meh'}
-            //
-            //     if ((rate & 0x1) === 0x1) {
-            //         sentiment =  sent["num_meh"];
-            //     }
-            //     if ((rate & 0x2) === 0x2) {
-            //         sentiment =  sent["num_what_a_kind_jesture"];
-            //     }
-            //     if ((rate & 0x4) === 0x4) {
-            //         sentiment = sent["num_made_me_feel_loved"];
-            //     }
-            //     if ((rate & 0x8) === 0x8) {
-            //         sentiment =  sent["num_restored_my_faith_in_humanity"];
-            //     }
-            //     if ((rate & 0x8) === 0x8) {
-            //         sentiment =  sent["num_changed_my_life"];
-            //     }
-            //     if ((rate & 0x10) === 0x10) {
-            //         sentiment =  sent["num_made_my_day"];
-            //     }
-            //
-            //     return sentiment;
-            // }
+        },
     }
 </script>
 

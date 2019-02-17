@@ -9,7 +9,7 @@ Vue.use(Router);
 
 export default new Router({
     mode: 'history',
-    hash: false,
+    hash: true,
     routes: [
         {path: '/', name: 'home', component: Home},
         {path: '/tellstory', name: 'tellstory', component: TellStory},
