@@ -11,7 +11,7 @@
                                 <v-list-tile-title v-html="item.text"></v-list-tile-title>
                             </v-list-tile-content>
 
-                            <v-list-tile-action>{{ stat[item.num] }}</v-list-tile-action>
+                            <v-list-tile-action>{{stat[item.num]}}</v-list-tile-action>
                         </v-list-tile>
                     </v-list>
     </v-layout>

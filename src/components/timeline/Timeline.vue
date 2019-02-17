@@ -8,14 +8,19 @@
         >
       <span
               slot="opposite"
-              :class="`headline font-weight-bold ${year.color}--text`"
-              v-text="year.datetime"
+              :class="`headline font-weight-bold grey--text`"
+              v-text="moment(year.datetime).format('YYYY-MM-DD')">
+
       ></span>
             <div class="py-3">
-                <h2 :class="`headline font-weight-light mb-3 ${year.color}--text`">Lorem ipsum</h2>
-                <div>
+                <h4 :class="`headline font-weight-light mb-3 ${year.color}--text`">
+                    <i class="material-icons" style="color:grey">location_on</i>
+                    {{year.location}}
+                </h4>
+                <p style="color:transparent">This is a dummy line that is needed to be removed. The problem with width </p>
+                <h3>
                     {{year.story}}
-                </div>
+                </h3>
             </div>
         </v-timeline-item>
     </v-timeline>
@@ -24,34 +29,46 @@
 <script>
     export default {
         name : "Timeline",
-        props: {
-            myHistory: {
-                type: Array,
-                required: true}}
-        // data: () => ({
-        //     years: [
-        //         {
-        //             color: 'cyan',
-        //             year: '1960'
-        //         },
-        //         {
-        //             color: 'green',
-        //             year: '1970'
-        //         },
-        //         {
-        //             color: 'pink',
-        //             year: '1980'
-        //         },
-        //         {
-        //             color: 'amber',
-        //             year: '1990'
-        //         },
-        //         {
-        //             color: 'orange',
-        //             year: '2000'
-        //         }
-        //     ]
-        // })
+        props: ['myHistory'],
+        computed: {
+            sortedItems: function () {
+                this.myHistory.sort((a, b) => {
+                    return new Date(a.datetime) - new Date(b.datetime);
+                });
+                return this.myHistory;
+            }
+        }
+            // sentiment: function () {
+            //     var sentiment = "";
+            //     sent = {
+            //         'num_made_my_day' : 'Made my day',
+            //         'num_what_a_kind_jesture' : 'Kind gesture',
+            //         'num_made_me_feel_loved' : 'Made me feel loved',
+            //         'num_restored_my_faith_in_humanity' :'Restored my faith',
+            //         'num_changed_my_life' : 'Changed my life',
+            //         'num_meh ' : 'Meh'}
+            //
+            //     if ((rate & 0x1) === 0x1) {
+            //         sentiment =  sent["num_meh"];
+            //     }
+            //     if ((rate & 0x2) === 0x2) {
+            //         sentiment =  sent["num_what_a_kind_jesture"];
+            //     }
+            //     if ((rate & 0x4) === 0x4) {
+            //         sentiment = sent["num_made_me_feel_loved"];
+            //     }
+            //     if ((rate & 0x8) === 0x8) {
+            //         sentiment =  sent["num_restored_my_faith_in_humanity"];
+            //     }
+            //     if ((rate & 0x8) === 0x8) {
+            //         sentiment =  sent["num_changed_my_life"];
+            //     }
+            //     if ((rate & 0x10) === 0x10) {
+            //         sentiment =  sent["num_made_my_day"];
+            //     }
+            //
+            //     return sentiment;
+            // }
     }
 </script>
 

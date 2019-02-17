@@ -3,11 +3,13 @@ import App from './App.vue'
 import router from './router/router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import moment from 'moment'
 
 window.axios = require('axios');
 
 Vue.use(Vuetify);
 
+Vue.prototype.moment = moment;
 // Vue.prototype.$searchAPI = 'http://localhost:5000/search';
 // Vue.prototype.$submitAPI = 'http://localhost:5000/submit';
 
