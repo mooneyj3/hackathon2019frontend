@@ -5,13 +5,9 @@
             <v-card-title primary-title >
                 <div >
                     <h3 class="headline mb-0">Share Your Experience</h3>
-                    <StoryForm></StoryForm>
+                    <StoryForm :card_name="card_name"></StoryForm>
                 </div>
             </v-card-title>
-            <v-card-actions>
-                <v-btn flat color="orange">Share</v-btn>
-                <v-btn flat color="orange">Explore</v-btn>
-            </v-card-actions>
         </v-card>
 
         <!-- Card for failed search -->
@@ -34,7 +30,7 @@
 <script>
     import StoryForm from "../forms/StoryForm";
     export default {
-        name: "TellStory.vue",
+        name: "TellStory",
         components: {StoryForm},
         data() {
             return {
@@ -46,7 +42,6 @@
                 card: "",
             }
         },
-        mounted: {},
         computed: {},
         methods: {
             getCard() {
