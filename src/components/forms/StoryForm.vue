@@ -65,7 +65,7 @@
             async submitForm () {
                 let self = this;
 
-                let ip_address = "ip_address placeholder"
+                let ip_address = "Location Unknown";
 
                 await axios.get('https://api.ipify.org/?format=json', {
                 }).then(function (response) {
@@ -75,48 +75,62 @@
                     console.log(error);
                 });
 
-
-
                 let ip_lookup = 'http://api.ipstack.com/' + ip_address + '?access_key=5e65942960bce479109f18f40462edf3';
-
-                let ip_location_details = "ip_location_details placeholder";
+                let ip_location_details = "Location Unknown";
 
                 await axios.get(ip_lookup, {
                 }).then(function (response) {
                     ip_location_details = response.data;
                 });
 
+                // console.log(ip_location_details)
+
+                let  new_location = {
+                    city: ip_location_details.city,
+                    region_code: ip_location_details.region_code,
+                    country_code: ip_location_details.country_code,
+                    latitude: ip_location_details.latitude,
+                    longitude: ip_location_details.longitude,
+                    ip_address: ip_location_details.ip
+                };
+
                 let new_history = {
-                    location: ip_address,
+                    location: JSON.stringify(new_location),
                     sentiment: this.computeSentiment(),
                     datetime: new Date(),
                     story: this.story
                 };
+
+                console.log("posting...");
+
+                let bad_language_status = 209;
 
                 await axios.post(this.$submitAPI, {
                     name: this.card_name,
                     history: JSON.stringify(new_history),
                 })
                     .then(function (response) {
-                        if (response.status === 209) {
+                        console.log(response);
+                        if (response.status === bad_language_status) {
                             console.log(response);
                             self.submit_error = true;
-                            // self.post_response = response.data;
                             self.post_response = "We detected offensive language, please modify your story."
                         }
                         else if (response.status !== 200) {
+                            console.log("error")
                             self.submit_error = true;
-                            self.post_response = error;
+                            self.post_response = "error";
                         }
                         else {
+                            console.log("success")
                             self.post_response = response.status;
                             self.$router.push("/card/" + self.card_name);
                         }
                     })
                     .catch(function (error) {
-                        console.log(error)
+                        console.log(error);
                         self.post_response = "server";
-                        if (error.status === 209) {
+                        if (error.status === bad_language_status) {
                             self.post_response = "We detected that the message was not positive, please share your positive experiences";
                         }
                         self.submit_error = true;

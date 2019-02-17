@@ -39,7 +39,7 @@
                                 self.show_not_found = true;
                             } else {
                                 self.card = response.data[0];
-                                self.history = response.data[0].history;
+                                self.history = response.data[0].history.reverse();
                                 console.log(self.history);
                             }
                         })

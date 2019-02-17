@@ -26,6 +26,7 @@
                 <v-text-field
                         v-model="card_name"
                         label="Card ID"
+                        v-on:keyup.enter="redirect"
                 ></v-text-field>
                 <v-btn flat color="blue" v-on:click="redirect">Find my card</v-btn>
             </v-card-actions>
