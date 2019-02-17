@@ -14,14 +14,20 @@
         <v-card v-if="show_search">
             <v-card-title primary-title>
                 <div >
-                    <h3 class="headline mb-0">Search for a card</h3>
-                    <div v-if="show_not_found">Uh oh, not found</div>
-                    <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                    <h3 class="headline mb-0">Search for a card to share an experience</h3>
+                    <div v-if="show_not_found">
+                        <v-alert :value="true" :v-if="show_not_found" type="info">
+                            Shucks, we couldn't find that card.  <br>Give it another try.
+                        </v-alert>
+                    </div>
                 </div>
             </v-card-title>
             <v-card-actions>
-                <v-btn flat color="orange">Share</v-btn>
-                <v-btn flat color="orange">Explore</v-btn>
+                <v-text-field
+                        v-model="card_name"
+                        label="Card ID"
+                ></v-text-field>
+                <v-btn flat color="blue" v-on:click="redirect">Find my card</v-btn>
             </v-card-actions>
         </v-card>
     </div>
@@ -33,8 +39,9 @@
         name: "TellStory",
         components: {StoryForm},
         data() {
+            //this.$route.query
             return {
-                card_name: this.$route.card_name,
+                card_name: "",
                 show_form: false,
                 show_not_found: false,
                 show_search: false,
@@ -44,35 +51,52 @@
         },
         computed: {},
         methods: {
-            getCard() {
+            redirect () {
+                // this.$router.push("/tellstory?name=" + self.card_name);
+                this.show_form = false;
+                this.show_not_found = false;
+                this.show_search = false;
+                this.$router.push({name: 'tellstory', query: { name: this.card_name }});
+                this.getCard(this.card_name);
+            },
+            getCard(card_name) {
                 let self = this;
 
-                // check for query in url
-                if (!('name' in this.card_name)) {
-                    this.show_form = true;
+                card_name = this.$route.query.name;
+                console.log(card_name);
+                this.card_name = card_name;
+                // check for query in ur
+
+                if (card_name === undefined || card_name === null) {
+                    this.show_search = true;
                 }
                 else {
                     axios.get(this.$searchAPI, {
                         params: {
-                            cardName: self.card_name.name,
+                            cardName: card_name,
                             oneOnly: true,
                         }
                     })
                         .then(function(response) {
-                            if (response.data.length !== 1) {
+                            console.log(response);
+                            // if (response.data.length !== 1) {
+                            if (response.data[0] === null) {
+                                self.show_search = true;
                                 self.show_not_found = true;
                             }
-                            self.show_form = true;
-                            self.card_name = self.card_name.name;
+                            else {
+                                self.show_form = true;
+                                self.card_name = card_name;
+                            }
                         })
                         .catch(function(error) {
                             self.show_not_found = true;
                         })
                 }
-
             }
         },
         beforeMount(){
+            this.card_name = this.$route.query;
             this.getCard();
         }
     }

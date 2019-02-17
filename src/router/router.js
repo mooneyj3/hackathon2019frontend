@@ -12,8 +12,8 @@ export default new Router({
     hash: false,
     routes: [
         {path: '/', name: 'home', component: Home},
-        {path: '/tellstory', name: 'home', component: TellStory},
-        {path: '/statistica', name: 'home', component: Statistica},
-        {path: '/card/:cardname', name: 'home', component: ViewCard},
+        {path: '/tellstory', name: 'tellstory', component: TellStory},
+        {path: '/statistica', name: 'statistic', component: Statistica},
+        {path: '/card/:cardname', name: 'viewcard', component: ViewCard},
     ]
 })
