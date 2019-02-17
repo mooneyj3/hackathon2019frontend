@@ -62,19 +62,38 @@
                 if (this.feel_loved.is_checked) sentiment += this.feel_loved.bin_value;
                 return sentiment;
             },
-            submitForm () {
+            async submitForm () {
                 let self = this;
 
+                let ip_address = "ip_address placeholder"
+
+                await axios.get('https://api.ipify.org/?format=json', {
+                }).then(function (response) {
+                    console.log(response);
+                    ip_address = response.data.ip;
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+
+
+                let ip_lookup = 'http://api.ipstack.com/' + ip_address + '?access_key=5e65942960bce479109f18f40462edf3';
+
+                let ip_location_details = "ip_location_details placeholder";
+
+                await axios.get(ip_lookup, {
+                }).then(function (response) {
+                    ip_location_details = response.data;
+                });
+
                 let new_history = {
-                    location: "ip-address",
+                    location: ip_address,
                     sentiment: this.computeSentiment(),
                     datetime: new Date(),
                     story: this.story
                 };
 
-                console.log(this.story);
-
-                axios.post(this.$submitAPI, {
+                await axios.post(this.$submitAPI, {
                     name: this.card_name,
                     history: JSON.stringify(new_history),
                 })
